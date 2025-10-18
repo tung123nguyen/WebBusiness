@@ -10,13 +10,7 @@ const getConnection = async () => {
     password: "1234",
     database: "nodejs_backend",
   });
-  try {
-    const [results, fields] = await connection.query("SELECT * FROM `user` ");
-
-    console.log(results); // results contains rows returned by server
-  } catch (err) {
-    console.log(err);
-  }
+  return connection;
 };
 
 export { getConnection };

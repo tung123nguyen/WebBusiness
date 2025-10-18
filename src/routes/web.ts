@@ -4,7 +4,7 @@ import {
   getCreatUserPage,
   getHomepage,
   postCreateUser,
-} from "../controllers/user-controller";
+} from "controllers/user-controller";
 const webRoute = (app: Express) => {
   const router = express.Router();
 

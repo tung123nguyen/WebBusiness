@@ -6,6 +6,11 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "routes/*": ["./src/routes/*"],
+      "controllers/*": ["./src/controllers/*"]
+    }
   }
 }

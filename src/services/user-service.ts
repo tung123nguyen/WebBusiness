@@ -1,10 +1,15 @@
-import { log } from "console";
+import { getConnection } from "../config/db";
 
 const handleCreateUser = (fullName: string, email: string, address: string) => {
   //insert DB
 
   //return result
-  log("Success");
+  console.log("Success");
 };
 
-export { handleCreateUser };
+const getAllUser = async () => {
+  const connection = await getConnection();
+  const [results, fields] = await connection.query("SELECT * FROM `user`");
+  return results;
+};
+export { handleCreateUser, getAllUser };
