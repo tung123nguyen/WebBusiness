@@ -1,7 +1,6 @@
 import express from "express";
-import webRoute from "./routes/web";
-import exp from "constants";
-import { getConnection } from "./config/db";
+import webRoute from "routes/web";
+import { getConnection } from "config/database";
 const app = express();
 const port = 8080;
 

@@ -10,7 +10,10 @@
     "baseUrl": ".",
     "paths": {
       "routes/*": ["./src/routes/*"],
-      "controllers/*": ["./src/controllers/*"]
+      "controllers/*": ["./src/controllers/*"],
+      "config/*": ["./src/config/*"],
+      "services/*": ["./src/services/*"],
+      "views/*": ["./src/views/*"]
     }
   }
 }
