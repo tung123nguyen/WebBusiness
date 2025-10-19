@@ -1,8 +1,9 @@
 import express from "express";
+
 import webRoute from "routes/web";
-import { getConnection } from "config/database";
+import { getConnection } from "src/configdb/database";
 const app = express();
-const port = 8080;
+const PORT = process.env.PORT;
 
 // config req.body
 app.use(express.json());
@@ -17,6 +18,6 @@ app.use(express.static("public"));
 
 getConnection();
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });

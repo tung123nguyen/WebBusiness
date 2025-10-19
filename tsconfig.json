@@ -11,7 +11,7 @@
     "paths": {
       "routes/*": ["./src/routes/*"],
       "controllers/*": ["./src/controllers/*"],
-      "config/*": ["./src/config/*"],
+      "config/*": ["src/configdb/*"],
       "services/*": ["./src/services/*"],
       "views/*": ["./src/views/*"]
     }
