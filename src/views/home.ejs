@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Web Ban Hang</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -40,7 +40,11 @@
             <td><%= user.name %></td>
             <td><%= user.email %></td>
             <td><%= user.address %></td>
-            <td><button class="btn btn-danger">Delete</button></td>
+            <td>
+              <form action="/delete-user/<%= user.id %>" method="post">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
           </tr>
         </tbody>
         <% }) %>
