@@ -10,7 +10,7 @@ import { getDashboardPage } from "controllers/admin/dashboard-controller";
 
 const webRoute = (app: Express) => {
   const router = express.Router();
-
+  // user route
   router.get("/", getHomepage);
   router.get("/create-user", getCreatUserPage);
   router.post("/create-user", postCreateUser);
@@ -18,6 +18,7 @@ const webRoute = (app: Express) => {
 
   // admin route
   router.get("/admin", getDashboardPage);
+
   app.use("/", router);
 };
 
