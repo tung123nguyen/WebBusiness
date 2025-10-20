@@ -5,7 +5,7 @@ const getDashboardPage = async (req: Request, res: Response) => {
 };
 
 const getAdminUserPage = async (req: Request, res: Response) => {
-  res.render("admin/user/user.ejs");
+  res.render("admin/user/show.ejs");
 };
 
 export { getDashboardPage, getAdminUserPage };
