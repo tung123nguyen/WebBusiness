@@ -4,4 +4,8 @@ const getDashboardPage = async (req: Request, res: Response) => {
   res.render("admin/dashboard/dashboard.ejs");
 };
 
-export { getDashboardPage };
+const getAdminUserPage = async (req: Request, res: Response) => {
+  res.render("admin/user/user.ejs");
+};
+
+export { getDashboardPage, getAdminUserPage };

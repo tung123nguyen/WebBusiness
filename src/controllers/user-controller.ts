@@ -3,7 +3,7 @@ import {
   deleteUser,
   getAllUser,
   handleCreateUser,
-} from "../services/user-service";
+} from "services/user-service";
 
 const getHomepage = async (req: Request, res: Response) => {
   const users = await getAllUser();

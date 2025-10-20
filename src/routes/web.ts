@@ -6,7 +6,10 @@ import {
   postCreateUser,
   postDeleteUser,
 } from "controllers/user-controller";
-import { getDashboardPage } from "controllers/admin/dashboard-controller";
+import {
+  getAdminUserPage,
+  getDashboardPage,
+} from "@/controllers/admin/admin-controller";
 
 const webRoute = (app: Express) => {
   const router = express.Router();
@@ -18,6 +21,7 @@ const webRoute = (app: Express) => {
 
   // admin route
   router.get("/admin", getDashboardPage);
+  router.get("/admin/user", getAdminUserPage);
 
   app.use("/", router);
 };

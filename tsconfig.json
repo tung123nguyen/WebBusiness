@@ -9,11 +9,13 @@
     "rootDir": "src",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./src/*"],
       "routes/*": ["./src/routes/*"],
       "controllers/*": ["./src/controllers/*"],
-      "config/*": ["src/configdb/*"],
+      "configdb/*": ["./src/configdb/*"],
       "services/*": ["./src/services/*"],
-      "views/*": ["./src/views/*"]
+      "views/*": ["./src/views/*"],
+      "models/*": ["./src/models/*"]
     }
   }
 }
