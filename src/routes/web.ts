@@ -7,6 +7,9 @@ import {
   postDeleteUser,
 } from "controllers/user-controller";
 import {
+  getAdminCreateUser,
+  getAdminOrderPage,
+  getAdminProductPage,
   getAdminUserPage,
   getDashboardPage,
 } from "@/controllers/admin/admin-controller";
@@ -20,8 +23,11 @@ const webRoute = (app: Express) => {
   router.post("/delete-user/:id", postDeleteUser);
 
   // admin route
-  router.get("/admin", getDashboardPage);
+  router.get("/admin/", getDashboardPage);
   router.get("/admin/user", getAdminUserPage);
+  router.get("/admin/create-user", getAdminCreateUser);
+  router.get("/admin/product", getAdminProductPage);
+  router.get("/admin/order", getAdminOrderPage);
 
   app.use("/", router);
 };
