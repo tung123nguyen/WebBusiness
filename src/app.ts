@@ -1,6 +1,5 @@
 import express from "express";
-import webRoute from "routes/web";
-import { getConnection } from "src/configdb/database";
+import webRoute from "@/routes/router";
 import { initDatabase } from "./configdb/seed";
 
 const app = express();

@@ -12,7 +12,7 @@ const getCreatUserPage = (req: Request, res: Response) => {
 
 const postCreateUser = async (req: Request, res: Response) => {
   const { name, email, address } = req.body;
-  await handleCreateUser(name, email, address);
+  // await handleCreateUser(name, email, address);
   res.redirect("/");
 };
 

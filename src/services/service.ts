@@ -1,24 +1,33 @@
 import { getConnection } from "src/configdb/database";
 import { prisma } from "@/configdb/client";
 
-const handleCreateUser = async (
-  name: string,
-  email: string,
-  address: string
-) => {
-  const newUser = await prisma.user.create({
-    data: {
-      name: name,
-      email: email,
-      address: address,
-    },
-  });
-  return newUser;
-};
-
 const getAllUser = async () => {
   const users = await prisma.user.findMany();
   return users;
+};
+
+const getAllRole = async () => {
+  const roles = await prisma.role.findMany();
+  return roles;
+};
+
+const handleCreateUser = async (
+  fullName: string,
+  username: string,
+  password: string,
+  address: string,
+  phone: string
+) => {
+  // const newUser = await prisma.user.create({
+  //   data: {
+  //     fullName: fullName,
+  //     username: username,
+  //     password: password,
+  //     address: address,
+  //     phone: phone,
+  //   },
+  // });
+  // return newUser;
 };
 
 const deleteUser = async (id: string) => {
@@ -30,4 +39,4 @@ const deleteUser = async (id: string) => {
   return deleteUser;
 };
 
-export { handleCreateUser, getAllUser, deleteUser };
+export { handleCreateUser, getAllUser, deleteUser, getAllRole };

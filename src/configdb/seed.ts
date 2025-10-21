@@ -7,9 +7,11 @@ const initDatabase = async () => {
     await prisma.user.createMany({
       data: [
         {
-          name: "hoang",
-          email: "hoang@gmail.com",
-          address: "hanoi",
+          fullName: "oke",
+          username: "oke",
+          password: "oke",
+          phone: "oke",
+          accountType: "ADMIN",
         },
       ],
     });
