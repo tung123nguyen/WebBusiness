@@ -26,8 +26,8 @@ const getAdminCreateUser = async (req: Request, res: Response) => {
 };
 
 const postAdminCreateUser = async (req: Request, res: Response) => {
-  const { fullName, username, address, phone } = req.body;
-  // await handleCreateUser();
+  const { fullName, username, password, address, phone, role } = req.body;
+
   res.redirect("/admin");
 };
 
