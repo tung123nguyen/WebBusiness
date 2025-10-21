@@ -1,9 +1,5 @@
 import { Request, Response } from "express";
-import {
-  deleteUser,
-  getAllUser,
-  handleCreateUser,
-} from "services/user-service";
+import { deleteUser, getAllUser, handleCreateUser } from "@/services/service";
 
 const getHomepage = async (req: Request, res: Response) => {
   const users = await getAllUser();

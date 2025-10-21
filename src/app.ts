@@ -1,6 +1,8 @@
 import express from "express";
 import webRoute from "routes/web";
 import { getConnection } from "src/configdb/database";
+import { initDatabase } from "./configdb/seed";
+
 const app = express();
 const PORT = process.env.PORT;
 
@@ -15,7 +17,9 @@ webRoute(app);
 // config static file
 app.use(express.static("public"));
 
-getConnection();
+// getConnection();
+// seeding data
+initDatabase();
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

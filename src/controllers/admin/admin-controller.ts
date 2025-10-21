@@ -1,4 +1,4 @@
-import { getAllUser } from "@/services/user-service";
+import { deleteUser, getAllUser, handleCreateUser } from "@/services/service";
 import { Request, Response } from "express";
 
 const getDashboardPage = async (req: Request, res: Response) => {
@@ -22,10 +22,24 @@ const getAdminCreateUser = async (req: Request, res: Response) => {
   res.render("admin/user/create.ejs");
 };
 
+const postAdminCreateUser = async (req: Request, res: Response) => {
+  const { name, email, address } = req.body;
+  await handleCreateUser(name, email, address);
+  res.redirect("/admin");
+};
+
+const postAdminDeleteUser = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  await deleteUser(id);
+  res.redirect("/admin");
+};
+
 export {
   getDashboardPage,
   getAdminUserPage,
   getAdminProductPage,
   getAdminOrderPage,
   getAdminCreateUser,
+  postAdminCreateUser,
+  postAdminDeleteUser,
 };

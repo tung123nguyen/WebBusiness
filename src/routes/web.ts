@@ -12,6 +12,8 @@ import {
   getAdminProductPage,
   getAdminUserPage,
   getDashboardPage,
+  postAdminCreateUser,
+  postAdminDeleteUser,
 } from "@/controllers/admin/admin-controller";
 
 const webRoute = (app: Express) => {
@@ -26,6 +28,8 @@ const webRoute = (app: Express) => {
   router.get("/admin/", getDashboardPage);
   router.get("/admin/user", getAdminUserPage);
   router.get("/admin/create-user", getAdminCreateUser);
+  router.post("/admin/create-user", postAdminCreateUser);
+  router.post("/admin/delete-user/:id", postAdminDeleteUser);
   router.get("/admin/product", getAdminProductPage);
   router.get("/admin/order", getAdminOrderPage);
 
