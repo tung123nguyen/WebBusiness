@@ -1,5 +1,5 @@
 import { prisma } from "@/config/client";
-
+import bcrypt from "bcrypt";
 const getAllUser = async () => {
   const users = await prisma.user.findMany();
   return users;
@@ -19,11 +19,12 @@ const handleCreateUser = async (
   address: string,
   avatar: string
 ) => {
+  const defaultPassword = await bcrypt.hash(password, 10);
   await prisma.user.create({
     data: {
       fullName: fullName,
       username: username,
-      password: password,
+      password: defaultPassword,
       phone: phone,
       accountType: role,
       address: address,

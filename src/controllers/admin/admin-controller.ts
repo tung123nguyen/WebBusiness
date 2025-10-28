@@ -34,6 +34,7 @@ const postAdminCreateUser = async (req: Request, res: Response) => {
   const { fullName, username, password, phone, role, address } = req.body;
   const file = req.file;
   const avatar = file?.filename ?? null;
+
   await handleCreateUser(
     fullName,
     username,
