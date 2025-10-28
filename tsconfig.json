@@ -12,7 +12,7 @@
       "@/*": ["./src/*"],
       "routes/*": ["./src/routes/*"],
       "controllers/*": ["./src/controllers/*"],
-      "configdb/*": ["./src/configdb/*"],
+      "config/*": ["./src/configdb/*"],
       "services/*": ["./src/services/*"],
       "views/*": ["./src/views/*"],
       "models/*": ["./src/models/*"]

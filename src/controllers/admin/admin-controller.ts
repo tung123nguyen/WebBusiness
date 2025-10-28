@@ -1,4 +1,9 @@
-import { deleteUser, getAllRole, getAllUser } from "@/services/service";
+import {
+  deleteUser,
+  getAllRole,
+  getAllUser,
+  handleCreateUser,
+} from "@/services/service";
 import { Request, Response } from "express";
 
 const getDashboardPage = async (req: Request, res: Response) => {
@@ -26,15 +31,25 @@ const getAdminCreateUser = async (req: Request, res: Response) => {
 };
 
 const postAdminCreateUser = async (req: Request, res: Response) => {
-  const { fullName, username, password, address, phone, role } = req.body;
-
-  res.redirect("/admin");
+  const { fullName, username, password, phone, role, address } = req.body;
+  const file = req.file;
+  const avatar = file?.filename ?? null;
+  await handleCreateUser(
+    fullName,
+    username,
+    password,
+    phone,
+    role,
+    address,
+    avatar
+  );
+  res.redirect("/admin/user");
 };
 
 const postAdminDeleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   await deleteUser(id);
-  res.redirect("/admin");
+  res.redirect("/admin/user");
 };
 
 export {

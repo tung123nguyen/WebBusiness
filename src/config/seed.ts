@@ -1,4 +1,4 @@
-import { prisma } from "@/configdb/client";
+import { prisma } from "@/config/client";
 
 const initDatabase = async () => {
   const countUser = await prisma.user.count();

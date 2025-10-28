@@ -1,5 +1,4 @@
-import { getConnection } from "src/configdb/database";
-import { prisma } from "@/configdb/client";
+import { prisma } from "@/config/client";
 
 const getAllUser = async () => {
   const users = await prisma.user.findMany();
@@ -15,20 +14,22 @@ const handleCreateUser = async (
   fullName: string,
   username: string,
   password: string,
-  address: string,
   phone: string,
-  role: string
+  role: string,
+  address: string,
+  avatar: string
 ) => {
-  // const newUser = await prisma.user.create({
-  //   data: {
-  //     fullName: fullName,
-  //     username: username,
-  //     password: password,
-  //     address: address,
-  //     phone: phone,
-  //   },
-  // });
-  // return newUser;
+  await prisma.user.create({
+    data: {
+      fullName: fullName,
+      username: username,
+      password: password,
+      phone: phone,
+      accountType: role,
+      address: address,
+      avatar: avatar,
+    },
+  });
 };
 
 const deleteUser = async (id: string) => {

@@ -15,6 +15,7 @@ import {
   postAdminCreateUser,
   postAdminDeleteUser,
 } from "@/controllers/admin/admin-controller";
+import fileUploadMiddleware from "@/middleware/multer";
 
 const webRoute = (app: Express) => {
   const router = express.Router();
@@ -24,11 +25,17 @@ const webRoute = (app: Express) => {
   router.post("/create-user", postCreateUser);
   router.post("/delete-user/:id", postDeleteUser);
 
-  // admin route
+  /////////////////////////
+  ////// admin route /////
+  ///////////////////////
   router.get("/admin/", getDashboardPage);
   router.get("/admin/user", getAdminUserPage);
   router.get("/admin/create-user", getAdminCreateUser);
-  router.post("/admin/handle-create-user", postAdminCreateUser);
+  router.post(
+    "/admin/create-user",
+    fileUploadMiddleware("avatar"),
+    postAdminCreateUser
+  );
   router.post("/admin/delete-user/:id", postAdminDeleteUser);
   router.get("/admin/product", getAdminProductPage);
   router.get("/admin/order", getAdminOrderPage);
