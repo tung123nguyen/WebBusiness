@@ -29,6 +29,7 @@ const handleCreateUser = async (
       accountType: role,
       address: address,
       avatar: avatar,
+      roleId: +role,
     },
   });
 };
