@@ -22,8 +22,6 @@ const getAllRole = async () => {
 const handleUpdateUser = async (
   id: string,
   fullName: string,
-  username: string,
-  password: string,
   phone: string,
   role: string,
   address: string,
@@ -34,14 +32,11 @@ const handleUpdateUser = async (
       id: +id,
     },
     data: {
-      fullName: fullName,
-      username: username,
-      password: password,
-      phone: phone,
-      accountType: role,
-      address: address,
-      avatar: avatar,
+      fullName,
+      phone,
       roleId: +role,
+      address,
+      ...(avatar !== undefined && { avatar: avatar }),
     },
   });
 };

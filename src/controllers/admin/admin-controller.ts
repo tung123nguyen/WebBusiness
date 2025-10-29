@@ -35,22 +35,6 @@ const getViewUser = async (req: Request, res: Response) => {
   });
 };
 
-const postUpdateUser = async (req: Request, res: Response) => {
-  // const { fullName, username, password, phone, role, address } = req.body;
-  // const file = req.file;
-  // const avatar = file?.filename ?? null;
-  // await handleUpdateUser(
-  //   id,
-  //   fullName,
-  //   username,
-  //   password,
-  //   phone,
-  //   role,
-  //   address,
-  //   avatar
-  // );
-};
-
 const getAdminCreateUser = async (req: Request, res: Response) => {
   const roles = await getAllRole();
   res.render("admin/user/create.ejs", {
@@ -73,6 +57,14 @@ const postAdminCreateUser = async (req: Request, res: Response) => {
     avatar
   );
   res.redirect("/admin/user");
+};
+
+const postUpdateUser = async (req: Request, res: Response) => {
+  const { id, fullName, phone, role, address } = req.body;
+  const file = req.file;
+  const avatar = file?.filename ?? undefined;
+  await handleUpdateUser(id, fullName, phone, role, address, avatar);
+  return res.redirect("/admin/user");
 };
 
 const postAdminDeleteUser = async (req: Request, res: Response) => {
