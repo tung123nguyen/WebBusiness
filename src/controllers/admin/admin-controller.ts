@@ -2,7 +2,9 @@ import {
   deleteUser,
   getAllRole,
   getAllUser,
+  getUserById,
   handleCreateUser,
+  handleUpdateUser,
 } from "@/services/service";
 import { Request, Response } from "express";
 
@@ -21,6 +23,32 @@ const getAdminProductPage = async (req: Request, res: Response) => {
 
 const getAdminOrderPage = async (req: Request, res: Response) => {
   res.render("admin/order/show.ejs");
+};
+
+const getViewUser = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const user = await getUserById(id);
+  const roles = await getAllRole();
+  res.render("admin/user/details.ejs", {
+    user: user,
+    roles: roles,
+  });
+};
+
+const postUpdateUser = async (req: Request, res: Response) => {
+  // const { fullName, username, password, phone, role, address } = req.body;
+  // const file = req.file;
+  // const avatar = file?.filename ?? null;
+  // await handleUpdateUser(
+  //   id,
+  //   fullName,
+  //   username,
+  //   password,
+  //   phone,
+  //   role,
+  //   address,
+  //   avatar
+  // );
 };
 
 const getAdminCreateUser = async (req: Request, res: Response) => {
@@ -61,4 +89,6 @@ export {
   getAdminCreateUser,
   postAdminCreateUser,
   postAdminDeleteUser,
+  getViewUser,
+  postUpdateUser,
 };

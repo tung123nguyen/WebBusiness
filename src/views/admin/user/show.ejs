@@ -64,6 +64,11 @@
                   <td><%= user.username %></td>
                   <td><%= user.address %></td>
                   <td>
+                    <form action="/admin/view-user/<%= user.id %>" method="get">
+                      <button type="submit" class="btn btn-warning">
+                        View
+                      </button>
+                    </form>
                     <form
                       action="/admin/delete-user/<%= user.id %>"
                       method="post"

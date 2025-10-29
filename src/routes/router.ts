@@ -12,8 +12,10 @@ import {
   getAdminProductPage,
   getAdminUserPage,
   getDashboardPage,
+  getViewUser,
   postAdminCreateUser,
   postAdminDeleteUser,
+  postUpdateUser,
 } from "@/controllers/admin/admin-controller";
 import fileUploadMiddleware from "@/middleware/multer";
 
@@ -31,6 +33,12 @@ const webRoute = (app: Express) => {
   router.get("/admin/", getDashboardPage);
   router.get("/admin/user", getAdminUserPage);
   router.get("/admin/create-user", getAdminCreateUser);
+  router.get("/admin/view-user/:id", getViewUser);
+  router.post(
+    "/admin/update-user",
+    fileUploadMiddleware("avatar"),
+    postUpdateUser
+  );
   router.post(
     "/admin/create-user",
     fileUploadMiddleware("avatar"),
