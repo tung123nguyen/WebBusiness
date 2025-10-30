@@ -1,9 +1,9 @@
 import {
-  deleteUser,
   getAllRole,
   getAllUser,
   getUserById,
   handleCreateUser,
+  handleDeleteUser,
   handleUpdateUser,
 } from "@/services/service";
 import { Request, Response } from "express";
@@ -69,7 +69,7 @@ const postUpdateUser = async (req: Request, res: Response) => {
 
 const postAdminDeleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
-  await deleteUser(id);
+  await handleDeleteUser(id);
   res.redirect("/admin/user");
 };
 

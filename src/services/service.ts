@@ -19,28 +19,6 @@ const getAllRole = async () => {
   return roles;
 };
 
-const handleUpdateUser = async (
-  id: string,
-  fullName: string,
-  phone: string,
-  role: string,
-  address: string,
-  avatar: string
-) => {
-  await prisma.user.update({
-    where: {
-      id: +id,
-    },
-    data: {
-      fullName,
-      phone,
-      roleId: +role,
-      address,
-      ...(avatar !== undefined && { avatar: avatar }),
-    },
-  });
-};
-
 const handleCreateUser = async (
   fullName: string,
   username: string,
@@ -65,7 +43,29 @@ const handleCreateUser = async (
   });
 };
 
-const deleteUser = async (id: string) => {
+const handleUpdateUser = async (
+  id: string,
+  fullName: string,
+  phone: string,
+  role: string,
+  address: string,
+  avatar: string
+) => {
+  await prisma.user.update({
+    where: {
+      id: +id,
+    },
+    data: {
+      fullName,
+      phone,
+      roleId: +role,
+      address,
+      ...(avatar !== undefined && { avatar: avatar }),
+    },
+  });
+};
+
+const handleDeleteUser = async (id: string) => {
   const deleteUser = await prisma.user.delete({
     where: {
       id: +id,
@@ -77,7 +77,7 @@ const deleteUser = async (id: string) => {
 export {
   handleCreateUser,
   getAllUser,
-  deleteUser,
+  handleDeleteUser,
   getAllRole,
   getUserById,
   handleUpdateUser,

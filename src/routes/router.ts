@@ -1,11 +1,6 @@
 import express from "express";
 import { Express } from "express";
-import {
-  getCreatUserPage,
-  getHomepage,
-  postCreateUser,
-  postDeleteUser,
-} from "controllers/user-controller";
+import { getHomepage } from "controllers/user-controller";
 import {
   getAdminCreateUser,
   getAdminOrderPage,
@@ -23,9 +18,6 @@ const webRoute = (app: Express) => {
   const router = express.Router();
   // user route
   router.get("/", getHomepage);
-  router.get("/create-user", getCreatUserPage);
-  router.post("/create-user", postCreateUser);
-  router.post("/delete-user/:id", postDeleteUser);
 
   /////////////////////////
   ////// admin route /////
@@ -35,14 +27,14 @@ const webRoute = (app: Express) => {
   router.get("/admin/create-user", getAdminCreateUser);
   router.get("/admin/view-user/:id", getViewUser);
   router.post(
-    "/admin/update-user",
-    fileUploadMiddleware("avatar"),
-    postUpdateUser
-  );
-  router.post(
     "/admin/create-user",
     fileUploadMiddleware("avatar"),
     postAdminCreateUser
+  );
+  router.post(
+    "/admin/update-user",
+    fileUploadMiddleware("avatar"),
+    postUpdateUser
   );
   router.post("/admin/delete-user/:id", postAdminDeleteUser);
   router.get("/admin/product", getAdminProductPage);
