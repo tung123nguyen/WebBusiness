@@ -18,7 +18,7 @@ const getAdminUserPage = async (req: Request, res: Response) => {
 };
 
 const getAdminProductPage = async (req: Request, res: Response) => {
-  res.render("admin/product/show.ejs");
+  res.render("admin/product/product.ejs");
 };
 
 const getAdminOrderPage = async (req: Request, res: Response) => {
@@ -35,27 +35,19 @@ const getViewUser = async (req: Request, res: Response) => {
   });
 };
 
-const getAdminCreateUser = async (req: Request, res: Response) => {
+const getCreateUser = async (req: Request, res: Response) => {
   const roles = await getAllRole();
   res.render("admin/user/create.ejs", {
     roles: roles,
   });
 };
 
-const postAdminCreateUser = async (req: Request, res: Response) => {
+const postCreateUser = async (req: Request, res: Response) => {
   const { fullName, username, password, phone, role, address } = req.body;
   const file = req.file;
   const avatar = file?.filename ?? null;
 
-  await handleCreateUser(
-    fullName,
-    username,
-    password,
-    phone,
-    role,
-    address,
-    avatar
-  );
+  await handleCreateUser(fullName, username, password, phone, role, address, avatar);
   res.redirect("/admin/user");
 };
 
@@ -67,7 +59,7 @@ const postUpdateUser = async (req: Request, res: Response) => {
   return res.redirect("/admin/user");
 };
 
-const postAdminDeleteUser = async (req: Request, res: Response) => {
+const postDeleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   await handleDeleteUser(id);
   res.redirect("/admin/user");
@@ -78,9 +70,9 @@ export {
   getAdminUserPage,
   getAdminProductPage,
   getAdminOrderPage,
-  getAdminCreateUser,
-  postAdminCreateUser,
-  postAdminDeleteUser,
+  getCreateUser,
+  postCreateUser,
+  postDeleteUser,
   getViewUser,
   postUpdateUser,
 };

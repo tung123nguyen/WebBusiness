@@ -3,22 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
     <meta name="author" content="Hỏi Dân IT" />
     <title>Product - Hỏi Dân IT</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="/admin/css/styles.css" rel="stylesheet" />
-    <script
-      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   </head>
 
   <body class="sb-nav-fixed">
@@ -33,7 +24,16 @@
               <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
               <li class="breadcrumb-item active">Products</li>
             </ol>
-            <div>table product</div>
+            <a href="/admin/create-product" class="btn btn-warning">Create Product</a>
+            <table class="table table-hover table-bordered">
+              <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Factory</th>
+                <th>Action</th>
+              </thead>
+            </table>
           </div>
         </main>
         <%- include('../layout/footer') -%>
