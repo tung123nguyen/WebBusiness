@@ -40,28 +40,31 @@
           <div class="row">
             <div class="col-6 mx-auto">
               <div style="width: 600px; margin: auto">
+                <% errors.forEach(function(error) { %>
+                <div class="alert alert-danger mb3"><%= error %></div>
+                <% }) %>
                 <h3 style="padding: 10px 0">Create New Product</h3>
                 <form action="/admin/create-product" method="post" enctype="multipart/form-data">
                   <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input type="text" name="name" class="form-control" />
+                    <input type="text" name="name" class="form-control" value="<%= oldValue.name %>" />
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Price</label>
-                    <input type="number" name="price" class="form-control" />
+                    <input type="number" name="price" class="form-control" value="<%= oldValue.price %>" />
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Detail Description</label>
-                    <textarea name="detailDesc" class="form-control" rows="2"></textarea>
+                    <textarea name="detailDesc" class="form-control" rows="2"><%= oldValue.detailDesc %></textarea>
                   </div>
                   <div class="row">
                     <div class="mb-3 col-6">
                       <label class="form-label">Short Description</label>
-                      <input type="text" class="form-control" name="shortDesc" />
+                      <input type="text" class="form-control" name="shortDesc" value="<%= oldValue.shortDesc %>" />
                     </div>
                     <div class="mb-3 col-6">
                       <label class="form-label">Quantity</label>
-                      <input type="number" class="form-control" name="quantity" />
+                      <input type="number" class="form-control" name="quantity" value="<%= oldValue.value %>" />
                     </div>
                   </div>
                   <div class="row">
