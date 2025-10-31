@@ -1,5 +1,6 @@
 import { prisma } from "@/config/client";
 import bcrypt from "bcrypt";
+
 const getAllUser = async () => {
   const users = await prisma.user.findMany();
   return users;
@@ -74,11 +75,4 @@ const handleDeleteUser = async (id: string) => {
   return deleteUser;
 };
 
-export {
-  handleCreateUser,
-  getAllUser,
-  handleDeleteUser,
-  getAllRole,
-  getUserById,
-  handleUpdateUser,
-};
+export { handleCreateUser, getAllUser, handleDeleteUser, getAllRole, getUserById, handleUpdateUser };

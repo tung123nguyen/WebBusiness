@@ -33,6 +33,21 @@
                 <th>Factory</th>
                 <th>Action</th>
               </thead>
+              <tbody>
+                <% products.forEach((product)=>{ %>
+                <tr>
+                  <td><%= product.id %></td>
+                  <td><%= product.name %></td>
+                  <td><%= product.price %></td>
+                  <td><%= product.factory %></td>
+                  <td>
+                    <form action="/admin/delete-product/<%= product.id %>" method="post">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
             </table>
           </div>
         </main>

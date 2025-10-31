@@ -5,7 +5,7 @@ import {
   handleCreateUser,
   handleDeleteUser,
   handleUpdateUser,
-} from "@/services/service";
+} from "@/services/admin/user-service";
 import { Request, Response } from "express";
 
 const getDashboardPage = async (req: Request, res: Response) => {
@@ -15,10 +15,6 @@ const getDashboardPage = async (req: Request, res: Response) => {
 const getAdminUserPage = async (req: Request, res: Response) => {
   const users = await getAllUser();
   res.render("admin/user/show.ejs", { users: users });
-};
-
-const getAdminProductPage = async (req: Request, res: Response) => {
-  res.render("admin/product/product.ejs");
 };
 
 const getAdminOrderPage = async (req: Request, res: Response) => {
@@ -68,7 +64,6 @@ const postDeleteUser = async (req: Request, res: Response) => {
 export {
   getDashboardPage,
   getAdminUserPage,
-  getAdminProductPage,
   getAdminOrderPage,
   getCreateUser,
   postCreateUser,

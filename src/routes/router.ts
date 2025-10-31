@@ -3,7 +3,6 @@ import { Express } from "express";
 import { getHomepage } from "controllers/user-controller";
 import {
   getAdminOrderPage,
-  getAdminProductPage,
   getAdminUserPage,
   getCreateUser,
   getDashboardPage,
@@ -11,10 +10,10 @@ import {
   postCreateUser,
   postDeleteUser,
   postUpdateUser,
-} from "@/controllers/admin/admin-controller";
+} from "@/controllers/admin/user-controller";
 import fileUploadMiddleware from "@/middleware/multer";
 import { getProductPage } from "@/controllers/product/product-controller";
-import { getCreateProductPage, postCreateProduct } from "@/controllers/admin/product-controller";
+import { getAdminProductPage, getCreateProductPage, postCreateProduct } from "@/controllers/admin/product-controller";
 
 const webRoute = (app: Express) => {
   const router = express.Router();

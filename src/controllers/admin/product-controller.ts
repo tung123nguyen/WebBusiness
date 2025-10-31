@@ -1,6 +1,11 @@
+import { getProductList, handleCreateProduct } from "@/services/admin/product-service";
 import { ProductSchema, TProductSchema } from "@/validation/product-schema";
-import { log } from "console";
 import { Request, Response } from "express";
+
+const getAdminProductPage = async (req: Request, res: Response) => {
+  const products = await getProductList();
+  res.render("admin/product/product.ejs", { products });
+};
 
 const getCreateProductPage = (req: Request, res: Response) => {
   const errors = [];
@@ -8,7 +13,7 @@ const getCreateProductPage = (req: Request, res: Response) => {
   res.render("admin/product/create-product.ejs", { errors: errors, oldValue });
 };
 
-const postCreateProduct = (req: Request, res: Response) => {
+const postCreateProduct = async (req: Request, res: Response) => {
   const { name, price, detailDesc, shortDesc, quantity, factory, target } = req.body as TProductSchema;
   const validate = ProductSchema.safeParse(req.body);
 
@@ -20,7 +25,10 @@ const postCreateProduct = (req: Request, res: Response) => {
     res.render("admin/product/create-product.ejs", { errors, oldValue });
   }
   // success
-  else res.redirect("/admin/product");
+  else {
+    await handleCreateProduct(name, +price, detailDesc, shortDesc, +quantity, factory, target);
+    res.redirect("/admin/product");
+  }
 };
 
-export { getCreateProductPage, postCreateProduct };
+export { getAdminProductPage, getCreateProductPage, postCreateProduct };
