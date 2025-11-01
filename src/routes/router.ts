@@ -16,6 +16,7 @@ import { getProductPage } from "@/controllers/product/product-controller";
 import {
   getAdminProductPage,
   getCreateProductPage,
+  getProductDetail,
   postCreateProduct,
   postDeleteProduct,
 } from "@/controllers/admin/product-controller";
@@ -40,6 +41,8 @@ const webRoute = (app: Express) => {
   router.get("/admin/create-product", getCreateProductPage);
   router.post("/admin/create-product", fileUploadMiddleware("image", "images/product"), postCreateProduct);
   router.post("/admin/delete-product/:id", postDeleteProduct);
+  router.get("/admin/view-product/:id", getProductDetail);
+
   router.get("/admin/order", getAdminOrderPage);
   app.use("/", router);
 };

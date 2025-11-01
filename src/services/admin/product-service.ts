@@ -36,4 +36,12 @@ const deleteProduct = async (id: string) => {
   });
 };
 
-export { handleCreateProduct, getProductList, deleteProduct };
+const getProductById = async (id: string) => {
+  return await prisma.product.findUnique({
+    where: {
+      id: +id,
+    },
+  });
+};
+
+export { handleCreateProduct, getProductList, deleteProduct, getProductById };

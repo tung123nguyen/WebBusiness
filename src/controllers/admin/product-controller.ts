@@ -1,4 +1,4 @@
-import { deleteProduct, getProductList, handleCreateProduct } from "@/services/admin/product-service";
+import { deleteProduct, getProductById, getProductList, handleCreateProduct } from "@/services/admin/product-service";
 import { ProductSchema, TProductSchema } from "@/validation/product-schema";
 import { Request, Response } from "express";
 
@@ -38,4 +38,10 @@ const postDeleteProduct = async (req: Request, res: Response) => {
   res.redirect("/admin/product");
 };
 
-export { getAdminProductPage, getCreateProductPage, postCreateProduct, postDeleteProduct };
+const getProductDetail = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const product = await getProductById(id);
+  res.render("admin/product/product-detail.ejs", { product: product });
+};
+
+export { getAdminProductPage, getCreateProductPage, postCreateProduct, postDeleteProduct, getProductDetail };
