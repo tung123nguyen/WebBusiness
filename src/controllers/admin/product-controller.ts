@@ -16,7 +16,8 @@ const getCreateProductPage = (req: Request, res: Response) => {
 const postCreateProduct = async (req: Request, res: Response) => {
   const { name, price, detailDesc, shortDesc, quantity, factory, target } = req.body as TProductSchema;
   const validate = ProductSchema.safeParse(req.body);
-
+  const file = req.file;
+  const image = file?.filename ?? null;
   if (!validate.success) {
     // error
     const errorZod = validate.error.issues;
@@ -26,7 +27,7 @@ const postCreateProduct = async (req: Request, res: Response) => {
   }
   // success
   else {
-    await handleCreateProduct(name, +price, detailDesc, shortDesc, +quantity, factory, target);
+    await handleCreateProduct(name, +price, detailDesc, shortDesc, +quantity, factory, target, image);
     res.redirect("/admin/product");
   }
 };
