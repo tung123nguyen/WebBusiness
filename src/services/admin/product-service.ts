@@ -26,4 +26,12 @@ const getProductList = async () => {
   return await prisma.product.findMany();
 };
 
-export { handleCreateProduct, getProductList };
+const deleteProduct = async (id: string) => {
+  return await prisma.product.delete({
+    where: {
+      id: +id,
+    },
+  });
+};
+
+export { handleCreateProduct, getProductList, deleteProduct };

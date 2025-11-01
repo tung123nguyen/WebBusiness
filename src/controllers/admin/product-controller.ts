@@ -1,4 +1,4 @@
-import { getProductList, handleCreateProduct } from "@/services/admin/product-service";
+import { deleteProduct, getProductList, handleCreateProduct } from "@/services/admin/product-service";
 import { ProductSchema, TProductSchema } from "@/validation/product-schema";
 import { Request, Response } from "express";
 
@@ -31,4 +31,10 @@ const postCreateProduct = async (req: Request, res: Response) => {
   }
 };
 
-export { getAdminProductPage, getCreateProductPage, postCreateProduct };
+const postDeleteProduct = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  await deleteProduct(id);
+  res.redirect("/admin/product");
+};
+
+export { getAdminProductPage, getCreateProductPage, postCreateProduct, postDeleteProduct };
