@@ -41,7 +41,8 @@
             <div class="col-6 mx-auto">
               <div style="width: 600px; margin: auto">
                 <h3 style="padding: 10px 0">Create New Product</h3>
-                <form action="/admin/create-product" method="post" enctype="multipart/form-data">
+                <form action="/admin/update-product" method="post" enctype="multipart/form-data">
+                  <input type="text" name="id" value="<%- product.id %>" style="display: none;">
                   <div class="mb-3">
                     <label class="form-label">Name</label>
                     <input type="text" name="name" class="form-control" value="<%= product.name %>" />
@@ -61,29 +62,24 @@
                     </div>
                     <div class="mb-3 col-6">
                       <label class="form-label">Quantity</label>
-                      <input type="number" class="form-control" name="quantity" value="<%= product.value %>" />
+                      <input type="number" class="form-control" name="quantity" value="<%= product.quantity %>" />
                     </div>
                   </div>
                   <div class="row">
                     <div class="mb-3 col-6">
                       <label class="form-label">Factory</label>
                       <select name="factory" class="form-select">
-                        <option value="APPLE">Apple (MacBook)</option>
-                        <option value="ASUS" selected>Asus</option>
-                        <option value="LENOVO">Lenovo</option>
-                        <option value="DELL">Dell</option>
-                        <option value="LG">LG</option>
-                        <option value="ACER">Acer</option>
+                        <% factoryOptions.forEach((factory) => { %>
+                        <option value="<%- factory.value %>" <%= factory.value === product.factory ? "selected" : '' %> ><%= factory.name %></option>
+                        <% }) %>
                       </select>
                     </div>
                     <div class="mb-3 col-6">
                       <label class="form-label">Target</label>
                       <select name="target" class="form-select">
-                        <option value="GAMING">Gaming</option>
-                        <option value="SINHVIEN-VANPHONG">Sinh viên - Văn phòng</option>
-                        <option value="THIET-KE-DO-HOA">Thiết kế đồ họa</option>
-                        <option value="MONG-NHE">Mỏng nhẹ</option>
-                        <option value="DOANH-NHAN">Doanh nhân</option>
+                        <% targetOptions.forEach((target) => { %>
+                        <option value="<%- target.value %>" <%= target.value === product.target ? "selected" : '' %> ><%= target.name %></option>
+                        <% }) %>
                       </select>
                     </div>
                   </div>
@@ -92,13 +88,20 @@
                     <label for="formFile" class="form-label">Image</label>
                     <input name="image" class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg" />
                   </div>
+                  <% if (product.image) { %>
                   <img
-                    style="max-height: 250px"
+                    style="max-height: 250px; display: block"
                     alt="avatar preview"
                     id="avatarPreview"
                     src="/images/product/<%= product.image %>"
                   />
-
+                  <% } else { %>
+                    <img
+                    style="max-height: 250px; display: none"
+                    alt="avatar preview"
+                    id="avatarPreview"
+                    />
+                  <% } %>
                   <div class="mb-3">
                     <button class="btn btn-danger">Submit</button>
                   </div>

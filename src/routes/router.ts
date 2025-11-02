@@ -19,6 +19,7 @@ import {
   getProductDetail,
   postCreateProduct,
   postDeleteProduct,
+  postUpdateProduct,
 } from "@/controllers/admin/product-controller";
 
 const webRoute = (app: Express) => {
@@ -40,9 +41,10 @@ const webRoute = (app: Express) => {
   router.get("/admin/product", getAdminProductPage);
   router.get("/admin/create-product", getCreateProductPage);
   router.post("/admin/create-product", fileUploadMiddleware("image", "images/product"), postCreateProduct);
+
   router.post("/admin/delete-product/:id", postDeleteProduct);
   router.get("/admin/view-product/:id", getProductDetail);
-
+  router.post("/admin/update-product", fileUploadMiddleware("image", "images/product"), postUpdateProduct);
   router.get("/admin/order", getAdminOrderPage);
   app.use("/", router);
 };
