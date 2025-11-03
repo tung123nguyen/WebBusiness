@@ -45,6 +45,7 @@ const webRoute = (app: Express) => {
   router.post("/admin/delete-product/:id", postDeleteProduct);
   router.get("/admin/view-product/:id", getProductDetail);
   router.post("/admin/update-product", fileUploadMiddleware("image", "images/product"), postUpdateProduct);
+
   router.get("/admin/order", getAdminOrderPage);
   app.use("/", router);
 };

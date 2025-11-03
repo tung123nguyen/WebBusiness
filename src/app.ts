@@ -1,6 +1,6 @@
 import express from "express";
 import webRoute from "@/routes/router";
-import { initDatabase } from "@/config/seed";
+import initDatabase from "@/config/seed";
 
 const app = express();
 const PORT = process.env.PORT;
