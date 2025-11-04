@@ -1,6 +1,6 @@
 import express from "express";
 import { Express } from "express";
-import { getHomepage } from "controllers/user-controller";
+import { getHomepage } from "@/controllers/client/user-controller";
 import {
   getAdminOrderPage,
   getAdminUserPage,
@@ -12,7 +12,7 @@ import {
   postUpdateUser,
 } from "@/controllers/admin/user-controller";
 import fileUploadMiddleware from "@/middleware/multer";
-import { getProductPage } from "@/controllers/product/product-controller";
+import { getProductPage } from "@/controllers/client/product-controller";
 import {
   getAdminProductPage,
   getCreateProductPage,
@@ -21,12 +21,14 @@ import {
   postDeleteProduct,
   postUpdateProduct,
 } from "@/controllers/admin/product-controller";
+import { getLoginPage } from "@/controllers/client/auth-controller";
 
 const webRoute = (app: Express) => {
   const router = express.Router();
   // user route
   router.get("/", getHomepage);
   router.get("/product/:id", getProductPage);
+  router.get("/login", getLoginPage);
   /////////////////////////
   ////// admin route /////
   ///////////////////////
@@ -45,7 +47,6 @@ const webRoute = (app: Express) => {
   router.post("/admin/delete-product/:id", postDeleteProduct);
   router.get("/admin/view-product/:id", getProductDetail);
   router.post("/admin/update-product", fileUploadMiddleware("image", "images/product"), postUpdateProduct);
-
   router.get("/admin/order", getAdminOrderPage);
   app.use("/", router);
 };
