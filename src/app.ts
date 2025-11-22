@@ -20,6 +20,11 @@ app.use(express.static("public"));
 // seeding data
 initDatabase();
 
+// handle not found 404
+app.use((req, res) => {
+  res.send("404 Not Found");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
